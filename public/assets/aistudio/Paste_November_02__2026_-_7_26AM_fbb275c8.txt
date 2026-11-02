@@ -1,0 +1,1003 @@
+FINAL MASTER PROMPT — JARVIS AI ANDROID ASSISTANT
+Python + Kivy + Google Gemini API + GitHub Actions + Direct APK Build
+YOUR ROLE
+Act as a senior Python developer, Android application engineer, AI integration specialist, Kivy UI/UX designer, Gemini API expert, Android permissions specialist, Smali reverse-engineering expert, and GitHub Actions build engineer.
+Build a complete, functional Android application named JARVIS AI, primarily using Python, Kivy, KivyMD where compatible, and Buildozer/python-for-android.
+The final deliverable must be a real Android application that can be built into an installable APK, not a web page, HTML application, static UI mockup, tutorial, or collection of incomplete sample files.
+Use Google AI Studio to generate and refine the project, and provide a complete GitHub-ready repository with an automated Android APK build workflow.
+Primary technology stack
+Python 3 compatible with the selected python-for-android toolchain.
+Kivy for the native packaged application's user interface.
+KivyMD only when compatible with the selected Kivy version.
+Google Gemini API for AI conversations, supported multimodal analysis, and dynamic model discovery.
+Buildozer and python-for-android for Android packaging.
+PyJNIus and Android Java/Kotlin bridge code where native Android functionality is required.
+Android SDK and supported Android APIs for permissions, speech, screen capture, and floating overlays.
+GitHub Actions for automated testing and APK generation.
+SQLite for local conversation history.
+Android Keystore-backed encryption or an appropriate Android secure-storage integration for sensitive credentials.
+Prefer a Python-first architecture. Add small Java/Kotlin bridge components only where Android's native APIs cannot be implemented reliably through Python.
+Do not replace the requested Android app with a browser-based application.
+REQUIRED PROJECT OUTPUT
+Generate the complete project, including:
+All Python source files.
+All Kivy UI screens and components.
+All application assets and icons.
+Android manifest configuration.
+Buildozer configuration.
+Gradle or native Android project files if needed for supported native integrations.
+Native Java/Kotlin bridge source files where necessary.
+Dependency and requirements configuration.
+Gemini API networking layer.
+Database and persistent settings implementation.
+Voice and speech components.
+Screen-awareness implementation.
+Floating assistant implementation.
+Smali analysis tools.
+Integrated code editor and diff workflow.
+README.md.
+.gitignore.
+GitHub Actions workflow at ".github/workflows/android-apk.yml".
+Unit tests for testable Python components.
+Build troubleshooting documentation.
+Exact instructions for obtaining and installing the generated APK.
+Create a coherent, modular project rather than placing the entire application in one enormous Python file.
+If a repository is already available, inspect its files before making changes. Otherwise, create a clean repository from scratch.
+Do not claim that the APK has been compiled or tested unless the build has actually been executed and verified.
+CORE IDENTITY AND PERSONALITY
+Application name: JARVIS AI.
+Default assistant identity:
+Address the user as "Sir" in normal conversation.
+Use a professional, intelligent, friendly, concise personality.
+Default to easy Hinglish.
+Understand and respond in Hindi, English, Hinglish, and other languages supported by the selected Gemini model.
+Prioritize Android development, APK modding, Smali, reverse engineering, debugging, and code comprehension.
+Explain technical material in simple English or Hinglish with practical examples.
+Remain consistent across conversations using persistent settings and relevant conversation context.
+Allow the user to configure personality, preferred language, response depth, response length, coding style, and other behavioral preferences.
+FIRST-LAUNCH SETUP WIZARD
+Create a polished onboarding flow.
+Step 1: Display an animated JARVIS startup screen.
+Step 2: Explain that a Google Gemini API key is required.
+Step 3: Allow the user to enter their API key securely.
+Step 4: Validate the key using a real Gemini API request.
+Step 5: Fetch available models from the official Gemini Models API.
+Step 6: Display a searchable list of models returned by the API, including available model names and capability metadata.
+Step 7: Filter models for the capabilities required by each feature.
+Step 8: Allow the user to select and confirm a model.
+Step 9: Save configuration securely and open the main chat interface.
+Step 10: Provide retry, back, and recovery options when setup fails.
+Handle:
+Invalid API keys.
+Network failures.
+Timeouts.
+API quota errors.
+Rate limits.
+Unavailable models.
+Unsupported capabilities.
+Empty model lists.
+Server-side errors.
+Do not show fake model data as a live API response.
+Official references:
+Gemini API documentation: https://ai.google.dev/gemini-api/docs
+Models API: https://ai.google.dev/api/models
+Use documented endpoints and request formats. Do not invent API paths, parameters, model names, or response properties.
+GEMINI API INTEGRATION
+Implement a reusable Gemini client in Python.
+Required operations:
+Validate API credentials.
+Retrieve available models dynamically.
+Select and persist a model.
+Send text prompts.
+Send image-containing prompts to compatible models.
+Include custom instructions in the supported system-instruction or conversation-context field.
+Maintain conversation context appropriately.
+Parse text responses and supported structured content.
+Handle API errors and cancellation.
+Refresh models manually from Settings.
+Display useful API status and error information.
+Use asynchronous networking or background execution so API calls never freeze the UI.
+Use network timeouts, cancellation, and duplicate-request prevention.
+Do not assume all Gemini models support image input, audio input, audio generation, or the same methods.
+Use documented model capabilities and gracefully disable unavailable features.
+Keep the API implementation modular so a secure backend can be added later.
+API key security
+Never commit an API key to GitHub.
+Never hardcode a real key in source files.
+Never print the key in logs or error messages.
+Store the key using an Android secure-storage implementation.
+Redact sensitive information from diagnostics.
+Explain that a key inside a distributed APK cannot be completely protected from extraction.
+Recommend a server-side proxy for production deployments that require stronger credential protection.
+MAIN JARVIS INTERFACE
+Build a responsive, futuristic, mobile-first Android interface.
+Visual design:
+Deep navy or charcoal background.
+Restrained cyan accents.
+Soft glow effects.
+Rounded chat cards.
+Clean typography.
+Smooth, lightweight transitions.
+Animated JARVIS assistant indicator.
+Readable code blocks.
+Good performance on ordinary Android phones.
+Main navigation:
+Chat.
+Smali Tools.
+Code Editor.
+History.
+Settings.
+Chat screen requirements:
+JARVIS title and assistant status.
+Scrollable conversation.
+User and assistant message bubbles.
+Multiline input field.
+Send button.
+Voice input button.
+Stop button.
+New Chat button.
+Copy response button.
+Copy code button.
+Loading indicator.
+Retry failed request.
+Error messages with actionable explanations.
+Code formatting and syntax-aware display.
+Conversation context management.
+Mandatory speech toggle: Put a clearly visible ON/OFF speech toggle in the upper-right corner of the chat screen.
+When ON, speak eligible assistant responses automatically.
+When OFF, continue displaying text normally without speaking.
+Persist this preference across restarts.
+REAL VOICE INPUT AND OUTPUT
+Implement real Android voice interaction.
+Voice input:
+Integrate Android SpeechRecognizer or another compatible Android speech-recognition API.
+Use PyJNIus or a native bridge as appropriate.
+Request microphone permission only when needed.
+Support available Hindi, English, and Hinglish-compatible recognition.
+Show listening, processing, idle, and error states.
+Display recognized text for review when appropriate.
+Let the user confirm, edit, send, or cancel recognized text.
+Stop listening when canceled.
+Handle unavailable recognition services and denied permissions.
+Speech output:
+Integrate Android TextToSpeech.
+Support available device voices and languages.
+Automatically speak eligible responses when the speech toggle is ON.
+Stop speech immediately when requested.
+Prevent duplicate or overlapping speech.
+Release resources correctly when the app stops.
+For technical responses, speak a short natural-language summary instead of reading lengthy Smali listings, source code, stack traces, or logs aloud.
+Keep the complete technical answer visible on screen.
+Persist voice preferences.
+Do not simulate speech functionality when the Android service is unavailable.
+USER-CONTROLLED SCREEN AWARENESS
+Implement a genuine screen-awareness feature.
+Provide:
+Screen Awareness ON/OFF setting.
+Start Screen Sharing action.
+Stop Screen Sharing action.
+Visible screen-sharing indicator.
+Permission and consent explanation.
+Clear capture status.
+Image preview before sending, when practical.
+Analyze Screen action.
+Explicit user action before uploading a captured image.
+Use Android MediaProjection with a native bridge or suitable Android service implementation.
+Follow the Android requirements for screen-capture consent, foreground services, notifications, and supported Android versions.
+Workflow:
+The user enables Screen Awareness.
+JARVIS explains the screen-capture permission.
+Android displays its official screen-capture consent interface.
+The user explicitly authorizes capture.
+JARVIS captures screen content only through the authorized session.
+The user can inspect the capture and request analysis.
+The image is sent only when required for the user's requested analysis.
+The user can stop sharing and revoke access.
+Example prompts:
+"Sirf screen par jo error hai, usko explain karo."
+"What is wrong with this Smali code?"
+"Find the false condition."
+"Explain the selected method."
+"What should I change here?"
+"Explain the highlighted line."
+Never secretly record the screen, bypass protected content, capture continuously without consent, or upload screen images when Screen Awareness is OFF.
+Do not claim that MediaProjection automatically grants access to every application's internal data.
+Official documentation:
+https://developer.android.com/media/grow/media-projection
+FLOATING JARVIS ASSISTANT
+Implement an optional movable floating assistant that can appear over other apps when Android permits it.
+Required functionality:
+Movable JARVIS bubble.
+Tap to open a compact assistant panel.
+Ask JARVIS.
+Analyze Screen.
+Voice Input.
+Open Full Chat.
+Minimize.
+Close.
+Enable/disable from Settings.
+Proper cleanup and lifecycle handling.
+Use an Android native overlay service or another documented, compatible integration. Request the overlay permission through the appropriate Android settings flow.
+Use a foreground service only when required and permitted.
+Keep the overlay lightweight and avoid unnecessary background execution.
+The floating panel should communicate with the main Python application through a clearly defined interface.
+If the app process is unavailable or the Android version prevents a requested operation, display an understandable limitation rather than a fake working control.
+Screen capture must still require its separate authorization. Overlay permission does not grant screen-reading access.
+Never claim that the assistant can invisibly operate over other apps or bypass Android background restrictions.
+ADVANCED SMALI MODDING ASSISTANT
+Make Smali analysis a core application feature.
+JARVIS should help with:
+Smali syntax and instruction explanations.
+DEX and method-descriptor interpretation.
+Register analysis.
+Parameter and return-value analysis.
+Control-flow tracing.
+Conditional-branch analysis.
+Stack-trace analysis.
+Logcat error diagnosis.
+APK installation and launch errors.
+Manifest and resource troubleshooting.
+Smali assembly and rebuilding failures.
+Java-to-Smali conceptual conversion.
+Smali-to-Java-style pseudocode.
+Before-and-after code comparison.
+Code formatting.
+Likely verifier errors.
+Debugging incorrect program logic.
+Explain instructions in simple Hinglish, with examples when helpful.
+Explain registers such as "v0", "v1", and "p0"; method declarations; access flags; descriptors; invocation instructions; return instructions; and conditional branches.
+Important instructions to understand include:
+"if-eqz"
+"if-nez"
+"if-eq"
+"if-ne"
+"goto"
+"invoke-virtual"
+"invoke-static"
+"invoke-direct"
+"move-result"
+"const"
+"return"
+"return-void"
+"iget"
+"iput"
+"sget"
+"sput"
+FALSE-CONDITION ANALYZER
+Implement a specialized workflow for questions such as "Check why this is false."
+The analyzer should:
+Obtain the supplied code, selected text, or explicitly authorized screenshot.
+Identify relevant conditional branches.
+Examine preceding assignments and register values.
+Trace the control flow and relevant method calls.
+Determine what can actually be established from the available code.
+Explain why a condition evaluates to true or false when sufficient evidence exists.
+Identify the responsible instruction or missing dependency.
+Distinguish confirmed findings from hypotheses.
+Propose the smallest appropriate correction.
+Show the corrected Smali snippet.
+Explain each changed line in simple Hinglish.
+Mention missing methods, class definitions, field values, or runtime state if necessary.
+Do not guess a register's value without tracing it.
+Do not label a condition as incorrect merely because it looks suspicious.
+When the available evidence is insufficient, request the surrounding instructions, complete method, relevant caller, or runtime log.
+ADDITIONAL MODDING TOOLS
+Create a Tools screen containing separate utilities.
+Smali Explainer
+Paste Smali.
+Explain selected lines.
+Explain the complete method.
+Show register usage.
+Explain invocation and return behavior.
+Conditional Analyzer
+Identify branch instructions.
+Display relevant preceding assignments.
+Present a human-readable control-flow explanation.
+Show potential corrections with explanations.
+Register Analyzer
+Identify referenced registers.
+Explain parameter registers.
+Display visible assignments and uses.
+Warn when additional method context is required.
+Method Analyzer
+Parse method signatures and descriptors.
+Explain parameters and return types.
+Explain relevant access flags.
+Logcat Analyzer
+Accept pasted crash logs.
+Locate exception names and relevant stack frames.
+Identify likely causes.
+Recommend verification steps.
+APK Troubleshooter
+Diagnose supplied build, install, launch, resource, and assembly errors.
+Explain the likely failure stage.
+Syntax Helper
+Detect common Smali formatting and structural issues.
+Use a genuine parser or validation process when available.
+Distinguish parser-confirmed errors from AI-generated suggestions.
+Conversion Helper
+Explain Java-like logic using Smali.
+Generate illustrative Smali from supplied logic when enough information is available.
+Explain generated code and its limitations.
+Diff Viewer
+Compare original and proposed code.
+Highlight added, removed, and modified lines.
+Do not claim to provide complete bytecode verification using simple regular expressions.
+INTEGRATED CODE EDITOR
+Create an integrated code-viewing and editing workspace.
+Required functionality:
+Paste source code or Smali.
+Open supported local text files through Android's Storage Access Framework.
+Display line numbers.
+Provide syntax highlighting when available.
+Select individual lines or ranges.
+Send selected text to JARVIS.
+Explain, debug, optimize, convert, or fix selected code.
+Show proposed changes as a diff.
+Apply changes only after approval.
+Reject changes.
+Undo changes.
+Copy code.
+Save changes to a user-selected location.
+Preserve the original until the user approves modifications.
+Handle large files without freezing the interface.
+When possible, preserve line endings and encoding.
+For large files, avoid rebuilding the entire UI for every keystroke.
+Do not silently modify files belonging to another application.
+Do not claim to edit another application's live editor unless an explicitly supported integration provides that functionality.
+SCREEN CONTEXT AND SELECTED TEXT
+Provide convenient ways to send relevant content to JARVIS.
+Support:
+Copy and paste.
+Local text-file opening.
+Android share intents where implemented.
+Explicitly authorized screen captures.
+Manual selection of code and error logs.
+Contextual action buttons.
+Contextual actions:
+Explain.
+Debug.
+Find False Condition.
+Fix Code.
+Optimize.
+Convert.
+Summarize.
+Compare.
+Accessibility-based text selection may be added only when justified, explicitly explained, and implemented under Android's applicable permission and disclosure requirements.
+Do not assume that ordinary Android applications can read another app's private UI or directly modify its editor.
+CUSTOM JARVIS INSTRUCTIONS
+Add a dedicated Instructions screen in Settings.
+Provide a large multiline editor with Save, Reset, and Clear actions.
+Default example:
+"You are JARVIS, my personal AI assistant. Address me as Sir. Explain technical topics in simple Hinglish unless I request another language. Prioritize Android development, APK modding, Smali debugging, and accurate step-by-step explanations. Analyze the actual code before suggesting changes. Keep answers organized and explain what each important Smali instruction does."
+Allow configuration of:
+Personality.
+Preferred language.
+Explanation depth.
+Coding conventions.
+Smali explanation style.
+Example usage.
+Default response length.
+Preferred Gemini model.
+Spoken response style.
+Persist these preferences across application restarts and conversations.
+Pass the instructions through the appropriate Gemini API system-instruction or conversation-context mechanism supported by the chosen model.
+Apply the preferences as strongly as supported, without claiming that custom instructions override model safety policies or Android restrictions.
+COMPLETE SETTINGS SCREEN
+Implement functional settings for:
+Gemini API key.
+API key replacement and validation.
+Selected model.
+Refresh model list.
+Model capability information.
+Speech ON/OFF.
+Text-to-speech language and voice.
+Voice-input language.
+Screen Awareness ON/OFF.
+Floating Assistant ON/OFF.
+Background speech preferences.
+Custom JARVIS instructions.
+Theme selection.
+Conversation history.
+Clear all conversation history.
+Clear cached screenshots and temporary files.
+Privacy and permission management.
+API errors and usage information when available.
+Reset application settings.
+About JARVIS and application version.
+Ask for permissions only when the user activates a feature that needs them.
+Explain the purpose of every sensitive permission in understandable language.
+CHAT HISTORY AND LOCAL STORAGE
+Use SQLite for persistent conversation history.
+Store:
+Conversation IDs.
+Conversation titles.
+User messages.
+Assistant responses.
+Timestamps.
+Relevant model metadata.
+Provide:
+New conversation.
+Conversation list.
+Rename conversation when supported.
+Delete one conversation.
+Clear all conversations.
+Search conversation history.
+Restore a previous conversation.
+Export conversation text when requested.
+Keep user settings persistent across restarts.
+Do not upload old conversations automatically. Send only the context needed for the current request.
+Provide a privacy-conscious retention policy and a clear deletion workflow.
+PYTHON ARCHITECTURE
+Use a maintainable project structure similar to:
+jarvis-ai/
+main.py
+README.md
+requirements.txt
+buildozer.spec
+.gitignore
+.github/
+workflows/
+android-apk.yml
+app/
+init.py
+config.py
+constants.py
+navigation.py
+theme.py
+database/
+init.py
+history.py
+settings_store.py
+ai/
+init.py
+gemini_client.py
+model_manager.py
+prompt_builder.py
+error_handler.py
+services/
+init.py
+speech_recognition.py
+text_to_speech.py
+screen_capture.py
+floating_assistant.py
+permissions.py
+secure_storage.py
+file_access.py
+smali/
+init.py
+parser.py
+register_analyzer.py
+branch_analyzer.py
+method_analyzer.py
+syntax_checker.py
+diff_engine.py
+screens/
+init.py
+onboarding.py
+chat.py
+tools.py
+editor.py
+history.py
+settings.py
+instructions.py
+widgets/
+init.py
+message_bubble.py
+code_block.py
+loading_indicator.py
+dialogs.py
+model_picker.py
+utils/
+init.py
+logging_utils.py
+network.py
+validation.py
+assets/
+icons/
+fonts/
+tests/
+test_prompt_builder.py
+test_smali_analyzer.py
+test_history.py
+android/
+native/
+README.md
+Add a compatible Gradle/native project and Java or Kotlin
+bridge components only where required by the implementation.
+Adapt this structure where the selected Kivy and python-for-android toolchain requires changes. Every referenced module must exist, and all imports must resolve.
+Keep networking, persistence, AI prompts, Smali analysis, and UI code separate.
+Use background threads or suitable asynchronous mechanisms for long-running operations, and safely marshal UI updates to the Kivy main thread.
+Use structured logging, redaction, and useful exception handling.
+ANDROID PERMISSIONS AND NATIVE INTEGRATION
+Configure the Android manifest and Buildozer settings for the minimum necessary permissions.
+Potential permissions, requested only when appropriate:
+INTERNET.
+RECORD_AUDIO.
+POST_NOTIFICATIONS when required by the supported Android version and feature.
+SYSTEM_ALERT_WINDOW through the relevant user-authorized settings flow.
+Appropriate foreground-service permissions for implemented services.
+MediaProjection consent through Android's official runtime flow.
+Use Android's Storage Access Framework instead of broad storage permissions when possible.
+Account for Android version differences and API-level restrictions.
+Use documented APIs and supported lifecycle methods.
+Implement proper cleanup for:
+Microphone sessions.
+Text-to-speech.
+MediaProjection.
+Foreground services.
+Floating overlays.
+Temporary screenshots.
+Network requests.
+Do not add unnecessary permissions.
+GITHUB ACTIONS AND APK GENERATION
+Create ".github/workflows/android-apk.yml".
+The workflow must:
+Run on a manual workflow dispatch and appropriate repository push events.
+Check out the repository.
+Set up a compatible JDK.
+Install required Python dependencies.
+Install the Android SDK and required build tools.
+Install the documented Buildozer and python-for-android build dependencies.
+Run Python syntax checks.
+Run available unit tests.
+Build the debug APK.
+Upload the generated APK as a GitHub Actions artifact when the build succeeds.
+Print clear failure information if a step fails.
+Pin compatible versions where practical and document the selected toolchain.
+Do not assume the Android build will work merely because the YAML exists.
+If native Gradle modules are introduced, configure and validate their builds as part of the workflow.
+Do not require a personal signing key for debug builds.
+Never print secrets in workflow logs.
+Do not embed the user's Gemini API key into the APK during CI.
+README instructions must explain:
+How to create a GitHub repository.
+How to upload the project.
+How to enable GitHub Actions.
+How to trigger the build.
+Where to find the workflow result.
+How to download the APK artifact.
+How to transfer the APK to an Android phone.
+How to install the APK while following Android's installation and security prompts.
+How to troubleshoot failed builds.
+If the build environment cannot execute Android packaging, provide the complete build-ready project and clearly state that compilation remains unverified.
+BUILD CONFIGURATION
+Create a working "buildozer.spec".
+Configure:
+Application name.
+Package name and domain.
+Application version.
+Python source directory.
+Supported source extensions.
+Required Python dependencies.
+Android minimum and target API levels compatible with the selected toolchain.
+Architectures supported by the build.
+Required permissions.
+Application icon.
+Android orientation.
+Release/debug packaging settings as appropriate.
+Choose mutually compatible versions of Python, Kivy, Buildozer, python-for-android, and dependencies.
+Avoid packages that cannot be compiled for Android unless a supported alternative is provided.
+Do not include desktop-only libraries in the Android dependency list.
+Document any platform-specific dependency limitations.
+UI/UX DETAILS
+Implement these screens fully:
+Startup
+Animated JARVIS branding.
+Setup progress.
+Error and retry handling.
+Chat
+Message list.
+Composer.
+Voice input.
+Speech toggle in the top-right.
+Stop generation/speech.
+New conversation.
+Copy actions.
+Model status.
+Tools
+Smali Explainer.
+False-Condition Analyzer.
+Register Analyzer.
+Method Analyzer.
+Logcat Analyzer.
+APK Troubleshooter.
+Code Comparison.
+Editor
+Text/code editor.
+Line numbers.
+Selection workflow.
+Diff view.
+Apply/Reject/Undo.
+Save and Copy.
+History
+Search.
+Restore.
+Delete.
+Clear all.
+Settings
+All configuration controls.
+Permission explanations.
+API status.
+Privacy and data controls.
+Instructions
+Editable multiline custom instructions.
+Save, Reset, Clear.
+Use real event handlers for all controls. Do not add buttons that merely display success messages without executing the corresponding operation.
+PERFORMANCE AND RELIABILITY
+Avoid blocking the UI thread.
+Prevent duplicate Send operations.
+Support request cancellation.
+Avoid unnecessary Gemini requests.
+Use reasonable timeouts.
+Handle offline conditions.
+Provide useful error messages.
+Avoid speaking the same response twice.
+Release native Android resources.
+Avoid retaining unnecessary screenshots.
+Avoid excessive memory use for large source files.
+Handle malformed API responses.
+Validate user-selected models and requested capabilities.
+Preserve original code before edits.
+Distinguish static analysis results from model-generated hypotheses.
+Provide tests for core Python logic.
+IMPLEMENTATION AND VERIFICATION RULES
+Before declaring the application complete:
+Inspect the project structure.
+Implement every core Python module.
+Verify imports and configuration.
+Check Python syntax.
+Run available unit tests.
+Check the Gemini request and response parsing against official documentation.
+Verify model discovery and capability filtering.
+Verify chat history and settings persistence.
+Verify speech-toggle behavior in the implemented application.
+Verify Smali-analysis workflows using representative test inputs.
+Validate Android permission declarations.
+Validate the Buildozer configuration.
+Execute the Android build when the environment permits.
+Fix reproducible errors.
+Document features that cannot be tested in the current environment.
+Do not use fake API responses in production code.
+Do not leave essential features as TODO comments, placeholder methods, or inactive buttons.
+If a feature depends on native Android APIs, implement the bridge or explicitly document the unimplemented part rather than pretending it works.
+FINAL DELIVERABLES
+Produce:
+Complete Python/Kivy Android application.
+All source files.
+Working Gemini API client.
+Dynamic model discovery.
+Secure API-key configuration workflow.
+Text chat.
+Voice input.
+Automatic spoken responses with a persistent ON/OFF toggle.
+Permission-based screen capture.
+Optional floating assistant.
+Advanced Smali tools.
+False-condition analyzer.
+Integrated code editor and diff workflow.
+Editable custom instructions.
+Persistent local chat history.
+Settings and privacy controls.
+Buildozer configuration.
+Android manifest and native bridge files as needed.
+GitHub Actions APK build workflow.
+README with exact setup, build, download, and installation instructions.
+Unit tests for core logic.
+A final implementation report listing completed features, tested functionality, and remaining limitations.
+FINAL EXECUTION INSTRUCTION
+Start by inspecting the available repository and toolchain. If no repository is available, create the complete project from scratch.
+Generate actual files, not merely an explanation of how to create them.
+Build the application incrementally, verify the implementation, and keep the project internally consistent.
+Use Python and Kivy as the primary application technology. Use native Android integrations when needed for genuine Android functionality.
+Do not substitute a web app, HTML page, static mockup, or fake demo for the Android application.
+Do not claim a feature is functional until its implementation exists. Do not claim a successful APK build until it has been verified.
+Final goal: Deliver a GitHub-ready, Python-based JARVIS Android assistant that can be packaged into an installable APK and provides real Gemini conversations, dynamic model selection, voice interaction, user-authorized screen analysis, optional floating assistance, Smali debugging, code editing with approval, and persistent customizable settings.
+Gemini 3.8 Flash
+Canceled
+
+summarize_auto
+Action history
+chevron_right
+error
+The task was canceled.
+MASTER PROMPT: JARVIS AI — PYTHON ANDROID APK BUILDER
+YOUR ROLE
+Act as an expert Python developer, Android application engineer, Kivy developer, Gemini API specialist, Android native integration engineer, Smali reverse-engineering expert, and APK build engineer.
+Create a complete, functional Android application named JARVIS AI, using Python as the primary programming language.
+My main goal is to receive an actual installable ".apk" file directly from this task. I do not want GitHub, GitHub Actions, a CI/CD workflow, or instructions that require me to build the APK myself.
+Use Python, Kivy, and Buildozer with python-for-android, or another reliable Python-based Android packaging solution.
+If your environment supports running an Android build toolchain, build the APK, verify that it exists, and provide it to me. If your environment cannot compile APKs, generate the complete project files and clearly explain the specific limitation. Never pretend that an APK was built when it was not.
+APK BUILD REQUIREMENTS
+Create a genuine Android application, not an HTML website, browser application, static prototype, or UI mockup.
+Use:
+Python for the main application logic.
+Kivy for the Android user interface.
+KivyMD only if compatible with the chosen versions.
+Buildozer and python-for-android for APK packaging.
+PyJNIus or native Android bridge code for Android functionality that Python libraries cannot implement directly.
+SQLite for local conversation history.
+Android-compatible secure storage for sensitive settings.
+The Google Gemini API for AI responses.
+Choose compatible dependency versions and avoid desktop-only packages.
+Configure the application name, package identifier, version, icons, Android SDK settings, permissions, and dependencies correctly.
+The final application should be installable on a compatible Android phone.
+JARVIS PERSONALITY
+Application name: JARVIS AI.
+Address me as "Sir" in normal conversation.
+Default language: easy Hinglish.
+Support Hindi, English, and other languages supported by the selected Gemini model.
+Use a professional, intelligent, friendly, concise personality.
+Prioritize Android modding, Smali, APK debugging, and programming.
+Explain technical topics in understandable Hinglish with examples.
+Maintain appropriate context across conversations.
+Allow me to customize the assistant's personality and behavior.
+GEMINI API SETUP
+On first launch, show a professional JARVIS startup screen and setup wizard.
+Implement:
+Gemini API key entry.
+Real API-key validation.
+Dynamic model discovery using the official Gemini Models API.
+Searchable model selection.
+Model capability information when available.
+Confirmation of the selected model.
+Secure configuration storage.
+Useful error messages and retry options.
+Official documentation:
+https://ai.google.dev/gemini-api/docs
+https://ai.google.dev/api/models
+Never hardcode my real API key or commit it into project files.
+Redact credentials from logs and errors. Explain that an API key embedded in a distributed application cannot be completely protected.
+Handle offline conditions, invalid keys, timeouts, unavailable models, quota limits, rate limits, and unsupported model capabilities.
+Never fake a live model list.
+MAIN CHAT SCREEN
+Create a modern futuristic interface with:
+Dark navy background.
+Cyan accents and subtle glow effects.
+JARVIS branding and animated status indicator.
+User and assistant message bubbles.
+Multiline message input.
+Send button.
+Microphone button.
+Stop button.
+New Chat button.
+Copy response and Copy Code actions.
+Conversation history.
+Loading indicators.
+Error handling.
+Readable formatted code blocks.
+Responsive Android layout.
+Provide navigation for Chat, Smali Tools, Code Editor, History, and Settings.
+Mandatory: Place a clearly visible Speech ON/OFF toggle in the upper-right corner of the chat screen.
+When ON, JARVIS automatically speaks suitable responses.
+When OFF, JARVIS responds in text without speaking.
+Remember the selected state across application restarts.
+REAL VOICE INPUT AND OUTPUT
+Implement genuine Android voice features.
+Voice input:
+Use Android SpeechRecognizer or a compatible native Android service.
+Request microphone permission when needed.
+Support available Hindi and English recognition.
+Display recognized text.
+Allow the user to review, edit, send, or cancel the recognized message.
+Display listening and processing states.
+Handle unavailable speech-recognition services.
+Voice output:
+Use Android TextToSpeech or a compatible native implementation.
+Speak eligible responses automatically when Speech is ON.
+Stop speech immediately when requested.
+Avoid duplicate or overlapping speech.
+Support available device languages and voices.
+Clean up speech resources properly.
+For long technical answers, speak a concise explanation rather than reading lengthy Smali code, logs, or stack traces verbatim.
+Do not simulate voice functionality if the required implementation is missing.
+SCREEN AWARENESS
+Implement an optional, explicitly authorized screen-analysis feature.
+Provide:
+Screen Awareness ON/OFF.
+Start Screen Sharing.
+Stop Screen Sharing.
+Visible sharing indicator.
+Permission explanation.
+Screenshot preview where practical.
+Analyze Screen action.
+Gemini image analysis for compatible models.
+Use Android MediaProjection and the required native Android APIs.
+Obtain the official Android screen-capture authorization before capturing content. Follow foreground-service and notification requirements for the target Android version.
+Send a screenshot for analysis only when authorized and requested.
+Support questions such as:
+Explain the error on my screen.
+Find the false condition.
+Explain this Smali method.
+What is wrong with this code?
+What should I change?
+Never secretly capture the screen, bypass protected content, or transmit screenshots when Screen Awareness is OFF.
+Official documentation:
+https://developer.android.com/media/grow/media-projection
+FLOATING JARVIS ASSISTANT
+Implement an optional floating assistant for use while another Android application is open.
+Features:
+Movable floating JARVIS bubble.
+Compact chat panel.
+Ask JARVIS.
+Analyze Screen.
+Voice Input.
+Open Full Chat.
+Minimize and close controls.
+Enable/disable setting.
+Appropriate overlay permission handling.
+Lifecycle management.
+Use a native Android overlay implementation where necessary.
+The overlay permission does not grant screen-capture permission. Screen awareness must remain separately authorized.
+If a feature cannot be implemented reliably in the selected environment, disclose the limitation rather than presenting a fake button.
+ADVANCED SMALI MODDING TOOLS
+Create a dedicated Smali Tools screen.
+Implement:
+Smali code explainer.
+Line-by-line explanations.
+Register analyzer.
+Method and descriptor analyzer.
+Conditional-branch analyzer.
+False-condition debugging.
+Logcat and stack-trace analyzer.
+APK installation-error helper.
+Smali assembly troubleshooting.
+Manifest and resource troubleshooting.
+Java-to-Smali explanation.
+Smali-to-Java-style pseudocode.
+Code comparison and formatting.
+Common syntax-error detection.
+Explain instructions such as:
+"if-eqz", "if-nez", "if-eq", "if-ne", "goto", "invoke-virtual", "invoke-static", "move-result", "const", "return", "iget", and "sget".
+Explain registers such as "v0", "v1", and "p0" in easy Hinglish.
+False-condition analysis workflow
+When I ask why a condition is false:
+Inspect the actual supplied code.
+Identify the relevant branch instruction.
+Trace preceding register assignments.
+Follow the available control flow.
+Explain the actual and intended behavior.
+Identify the instruction responsible when evidence supports the conclusion.
+Suggest a minimal correction.
+Show corrected Smali.
+Explain every changed line in simple Hinglish.
+State when more code or runtime logs are needed.
+Never guess register values or claim certainty without sufficient evidence.
+CODE EDITOR
+Create an integrated editor that supports:
+Pasting code and Smali.
+Opening supported text files.
+Line numbers.
+Syntax highlighting when available.
+Selecting lines or code ranges.
+Sending selected code to JARVIS.
+Explain, Debug, Fix, Optimize, and Convert actions.
+Before-and-after diff.
+Apply, Reject, Undo, and Copy.
+Saving edited text files to a user-selected location.
+Never modify the original content without approval.
+Do not claim the app can directly modify another application's editor or private files without an authorized supported integration.
+CUSTOM INSTRUCTIONS
+Add a dedicated Instructions section.
+Include an editable multiline text field with Save, Reset, and Clear controls.
+Default instructions:
+"You are JARVIS, my personal AI assistant. Address me as Sir. Explain technical topics in simple Hinglish unless I request another language. Prioritize Android development, APK modding, Smali debugging, and accurate step-by-step explanations. Analyze the actual code before suggesting changes. Keep answers organized and explain what each important Smali instruction does."
+Allow customization of language, personality, explanation depth, coding style, response length, and spoken response style.
+Persist these instructions and pass them to Gemini using the supported system-instruction or conversation-context mechanism.
+SETTINGS AND HISTORY
+Provide settings for:
+Gemini API key management.
+Model selection and refresh.
+Speech toggle and voice preferences.
+Voice-input language.
+Screen Awareness.
+Floating Assistant.
+Theme selection.
+Custom instructions.
+Conversation history.
+Clear all conversations.
+Clear cached screenshots.
+Privacy information.
+Permissions.
+API error information.
+Reset application settings.
+About JARVIS.
+Store conversation history locally using SQLite.
+Support creating, restoring, searching, and deleting conversations.
+Do not automatically upload all stored history or cached screenshots.
+PYTHON PROJECT STRUCTURE
+Create a complete, maintainable project with files similar to:
+jarvis_ai/
+main.py
+buildozer.spec
+requirements.txt
+README.md
+app/
+init.py
+config.py
+database.py
+gemini_client.py
+model_manager.py
+prompt_builder.py
+voice_input.py
+text_to_speech.py
+screen_awareness.py
+floating_assistant.py
+secure_storage.py
+permissions.py
+smali_analyzer.py
+code_editor.py
+diff_engine.py
+history_manager.py
+settings_manager.py
+screens/
+startup.py
+chat.py
+tools.py
+editor.py
+history.py
+settings.py
+instructions.py
+widgets/
+message_bubble.py
+code_block.py
+model_picker.py
+dialogs.py
+assets/
+icons/
+tests/
+test_smali_analyzer.py
+test_prompt_builder.py
+test_history.py
+android_native/
+README.md
+Add Java/Kotlin bridge sources only when required.
+Adapt this structure as needed, but create every referenced module and ensure imports resolve.
+Use background execution for network calls and file processing. Keep UI updates on the appropriate Kivy thread.
+APK BUILD AND DELIVERY
+This is the most important deliverable.
+First determine whether your current execution environment can actually compile Android APKs.
+If it can:
+Generate all required project files.
+Install or use compatible build dependencies.
+Configure Buildozer and python-for-android.
+Build a debug APK.
+Fix reproducible build errors.
+Verify that the APK file exists and is non-empty.
+Confirm the package identifier and build output.
+Provide a working download attachment for the generated APK.
+Provide the source project as an additional deliverable.
+Clearly list which features have actually been tested.
+If the environment cannot compile APKs:
+Generate all source files and configuration files.
+Provide them as a downloadable project archive if file-generation tools are available.
+Explain exactly why APK compilation is unavailable.
+Do not claim the source archive is an APK.
+Do not claim a build succeeded without verification.
+Do not require GitHub, GitHub Actions, a remote repository, or cloud CI as a mandatory part of the solution.
+Do not ask me to manually assemble dozens of source files if you can generate them directly.
+TESTING AND RELIABILITY
+Verify:
+Python syntax.
+Imports and module structure.
+Gemini API request formatting.
+Dynamic model discovery.
+Error handling.
+Local history persistence.
+Settings persistence.
+Smali-analysis examples.
+Build configuration.
+Android permissions.
+Voice integration.
+Native screen-capture and overlay integrations when the environment permits.
+Do not leave core features as TODO comments or inactive controls.
+Distinguish verified static analysis from AI-generated suggestions.
+If Android-specific features cannot be tested in the available environment, document that limitation honestly.
+FINAL INSTRUCTION
+Start creating the actual Python Android application now.
+Prioritize a working APK and real implementations over lengthy explanations.
+Do not create an HTML app. Do not replace the Android app with a web page. Do not use GitHub as a required build mechanism.
+don't include in app download zip and don't include anythings which make app odd. ok
+make suitable for mobile phone. all features working. and in red colors theme. whole.
+all best and dont include other stuffs except real app things
+My expected final result is an installable JARVIS AI APK, accompanied by the Python source project and a clear report of what works and what remains limited.

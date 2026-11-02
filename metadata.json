@@ -1,0 +1,6 @@
+{
+  "name": "JARVIS AI",
+  "description": "Mobile-first AI assistant for Android modding, Smali reverse engineering, false-condition analysis, code diffing, and voice interaction.",
+  "requestFramePermissions": ["microphone", "display-capture"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
